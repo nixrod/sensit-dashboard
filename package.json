@@ -1,0 +1,17 @@
+{
+  "name": "sensit-dashboard",
+  "version": "1.0.0",
+  "description": "A dashboard which displays values from a sens'it",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nixrod",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "moment": "^2.17.1",
+    "request": "^2.81.0"
+  }
+}
