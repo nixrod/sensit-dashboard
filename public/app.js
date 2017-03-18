@@ -1,4 +1,9 @@
-$.get( "http://localhost/data", function( data ) {
+var url = 'https://powerful-earth-71120.herokuapp.com/data';
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+  url = 'http://localhost:5000/data';
+}
+
+$.get( url, function( data ) {
   var temperature_values = [];
   var humidity_values = [];
   var battery_values = [];
