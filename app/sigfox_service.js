@@ -1,5 +1,5 @@
 var request = require('request');
-var moment = require('moment');
+var moment = require('moment-timezone');
 var parser = require('./payload_parser.js');
 
 var exports = module.exports = {};
@@ -28,7 +28,7 @@ function processResponseBody(body) {
 
   body.data.forEach(item => {
     let message = {};
-    message.timestamp = moment.unix(item.time).format('HH:mm');
+    message.timestamp = moment.unix(item.time).tz("Europe/Berlin").format('HH:mm');
     message.battery = parser.getBatteryVoltage(item.data);
     message.temperature = parser.getTemperature(item.data);
     message.humidity = parser.getHumidity(item.data);
