@@ -1,17 +1,16 @@
 var request = require('request');
 var moment = require('moment');
 var parser = require('./payload_parser.js');
-var config = require('./config.js');
 
 var exports = module.exports = {};
 
 exports.getMessages = function() {
   return new Promise((resolve, reject) => {
     request({
-      url: 'https://backend.sigfox.com/api/devices/'+ config.sensit_device_id +'/messages',
+      url: 'https://backend.sigfox.com/api/devices/'+ process.env.SENSIT_DEVICE_ID +'/messages',
       method: 'GET',
       headers: {
-          'Authorization': 'Basic ' + config.sigfox_basic_auth_token
+          'Authorization': 'Basic ' + process.env.SIGFOX_BASIC_AUTH_TOKEN
       }
     }, function(error, response, body){
       if(error) {

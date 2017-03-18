@@ -1,8 +1,9 @@
-var sigfox_service = require('./app/sigfox_service');
-var config = require('./app/config');
+require('dotenv').config();
 
+var sigfox_service = require('./app/sigfox_service');
 var express = require('express');
 var app = express();
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static('public'));
@@ -19,7 +20,7 @@ app.get('/data', function (req, res) {
     // If the user enters a username and password, the browser re-requests the route
     // and includes a Base64 string of those credentials.
     var credentials = new Buffer(auth.split(" ").pop(), "base64").toString("ascii").split(":");
-    if (credentials[0] === config.webapp_user && credentials[1] === config.webapp_password) {
+    if (credentials[0] === process.env.WEBAPP_USER && credentials[1] === process.env.WEBAPP_PASSWORD) {
       sigfox_service.getMessages().then(response => {
         res.json(response);
       });
@@ -28,8 +29,6 @@ app.get('/data', function (req, res) {
       return res.status(403).send("Access Denied (incorrect credentials)");
     }
   }
-
-
 });
 
 app.listen(app.get('port'), function() {
