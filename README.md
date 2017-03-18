@@ -9,3 +9,6 @@ SIGFOX_BASIC_AUTH_TOKEN=<the basic auth token the sigfox api>
 WEBAPP_USER=<the username for the webapp>
 WEBAPP_PASSWORD=<the password of the webapp>
 ```
+
+## Demo
+https://powerful-earth-71120.herokuapp.com/
